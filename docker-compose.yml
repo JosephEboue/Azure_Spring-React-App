@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  frontend:
+    image: h3registry.azurecr.io/front-app-react
+    ports:
+      - "3000:3000"
+
+  backend:
+    image: h3registry.azurecr.io/back-app-spring
+    ports:
+      - "9191:9191"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:sqlserver://springdb1.database.windows.net:1433;database=springAppDB;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
+      SPRING_DATASOURCE_USERNAME: "CloudSA5de17cad"
+      SPRING_DATASOURCE_PASSWORD: "Password@123"
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "springAppDB"
+      POSTGRES_USER: "CloudSA5de17cad"
+      POSTGRES_PASSWORD: "Password@123"
+    ports:
+      - "5432:5432"
+
