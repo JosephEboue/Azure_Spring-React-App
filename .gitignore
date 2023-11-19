@@ -1,0 +1,4 @@
+# .gitignore
+
+# Ignore the "img" directory
+img/
